@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Consultation — Annika Tara</title>
+  <meta name="description" content="Book a free 20-minute consultation with Annika Tara — a gentle first conversation to see if working together is a fit.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="subpage">
+
+  <header class="nav nav--solid" id="nav">
+    <a class="nav__logo" href="index.html" aria-label="Annika Tara — home">
+      <img src="assets/logo.png" alt="Annika Tara">
+    </a>
+    <nav class="nav__links" aria-label="Main navigation">
+      <a href="my-approach.html">Approach</a>
+      <a href="bio.html">Bio</a>
+      <a href="index.html#offerings">Sessions</a>
+      <a href="index.html#words">Testimonials</a>
+      <a href="index.html#contact">Contact</a>
+      <a class="btn btn--small" href="free-consultation.html" aria-current="page">Free consultation</a>
+    </nav>
+    <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <section class="booking section booking--page" id="book">
+      <img class="booking__mountains" src="assets/mountains-band.jpg" alt="" aria-hidden="true">
+      <div class="booking__halo" aria-hidden="true"></div>
+      <p class="section__eyebrow reveal">Free consultation</p>
+      <h1 class="reveal">Start your journey</h1>
+      <p class="section__lead reveal">
+        A gentle first conversation. We meet, we talk, and we see if it's a fit —
+        no pressure, all warmth. You'll leave with a clearer sense of what working
+        together could look like. Pick a time that suits you. ✦
+      </p>
+
+      <!-- ▸ BOOKING WIDGET — styled MOCK of the TidyCal widget (preview).
+           To go live: delete `.tidycal-mock` and uncomment the real embed,
+           then set the real booking path. See site/README.md. -->
+      <div class="booking__embed reveal">
+        <div class="tidycal-mock" id="tidycal-mock" aria-label="Booking calendar preview">
+          <div class="tcm__aside">
+            <img class="tcm__avatar" src="assets/logo.png" alt="Annika Tara">
+            <p class="tcm__host">Annika Tara</p>
+            <h3 class="tcm__title">Free Consultation</h3>
+            <ul class="tcm__meta">
+              <li><span aria-hidden="true">◷</span> 20 minutes</li>
+              <li><span aria-hidden="true">◉</span> Video call</li>
+              <li><span aria-hidden="true">✦</span> No pressure, all warmth</li>
+            </ul>
+            <p class="tcm__blurb">A gentle first conversation — we meet, we talk, and we see if it's a fit.</p>
+          </div>
+          <div class="tcm__main">
+            <div class="tcm__calhead">
+              <button class="tcm__nav" type="button" aria-label="Previous month">‹</button>
+              <span class="tcm__month" id="tcm-month">Month Year</span>
+              <button class="tcm__nav" type="button" aria-label="Next month">›</button>
+            </div>
+            <div class="tcm__dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+            <div class="tcm__grid" id="tcm-grid"></div>
+          </div>
+          <div class="tcm__slots">
+            <p class="tcm__slotday" id="tcm-slotday">Select a day</p>
+            <div class="tcm__slotlist" id="tcm-slotlist"></div>
+            <button class="btn btn--primary tcm__confirm" id="tcm-confirm" type="button" disabled>Confirm</button>
+            <p class="tcm__preview">Preview — live scheduling once TidyCal is connected</p>
+          </div>
+        </div>
+
+        <!-- ▸ REAL TIDYCAL EMBED — uncomment to go live, remove the mock above.
+        <div class="tidycal-embed" data-path="annikatara/free-consultation"></div>
+        -->
+        <noscript>
+          <a class="btn btn--primary" href="https://tidycal.com/annikatara">Open the booking page</a>
+        </noscript>
+      </div>
+      <p class="booking__fallback reveal">
+        Prefer to write first? <a href="index.html#contact">Send a message →</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <img class="footer__logo" src="assets/logo.png" alt="Annika Tara">
+    <p class="footer__tag">relational life coaching · embodiment · nature connection</p>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="my-approach.html">Approach</a>
+      <a href="bio.html">Bio</a>
+      <a href="individual.html">Individual</a>
+      <a href="couples.html">Couples</a>
+      <a href="free-consultation.html">Free consultation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <p class="footer__fine">© 2026 Annika Tara · Relational Life Coaching · <a href="#">Privacy Policy</a> · <a href="#">Terms</a></p>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

@@ -124,11 +124,12 @@ if (!reduceMotion && finePointer) {
   });
 }
 
-/* ─── Floating book pill: appears once the hero is gone ─── */
+/* ─── Floating book pill ─────────────────────────────────── */
 const pill = document.getElementById("bookpill");
 const hero = document.getElementById("hero");
 const booking = document.getElementById("book");
 if (pill && hero && booking) {
+  // landing: show once the hero is gone, hide at the booking section
   let heroVisible = true, bookingVisible = false;
   const update = () =>
     pill.classList.toggle("show", !heroVisible && !bookingVisible);
@@ -142,6 +143,45 @@ if (pill && hero && booking) {
     bookingVisible = e.isIntersecting;
     update();
   }, { threshold: 0.15 }).observe(booking);
+} else if (pill && !booking) {
+  // sub-pages (not the booking page itself): show after a little scroll
+  const onScrollPill = () => pill.classList.toggle("show", window.scrollY > 300);
+  window.addEventListener("scroll", onScrollPill, { passive: true });
+  onScrollPill();
+}
+
+/* ─── Contact form (Web3Forms, graceful preview mode) ────── */
+const cform = document.getElementById("contact-form");
+if (cform) {
+  const status = document.getElementById("contact-status");
+  cform.addEventListener("submit", async e => {
+    e.preventDefault();
+    const key = cform.querySelector("[name=access_key]").value;
+    if (!key || key === "YOUR_ACCESS_KEY_HERE") {
+      status.textContent = "Preview mode — add a Web3Forms access key to receive messages (see README).";
+      status.className = "contact__status is-err";
+      return;
+    }
+    status.textContent = "Sending…";
+    status.className = "contact__status";
+    try {
+      const res = await fetch(cform.action, {
+        method: "POST",
+        body: new FormData(cform),
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        status.textContent = "Thank you — your message is on its way. ✦";
+        status.className = "contact__status is-ok";
+        cform.reset();
+      } else {
+        throw new Error("bad response");
+      }
+    } catch {
+      status.textContent = "Something went wrong — please email hello@annikatara.com.";
+      status.className = "contact__status is-err";
+    }
+  });
 }
 
 /* ─── Mock TidyCal booking widget (preview only) ─────────── */

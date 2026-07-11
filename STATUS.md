@@ -1,6 +1,34 @@
 # STATUS — Annika Tara Website
 
-_Last updated: 2026-07-11 (session 3)_
+_Last updated: 2026-07-11 (session 4)_
+
+## Session 4 — multi-page expansion
+
+Now a **multi-page** site (shared nav/footer across pages):
+- `index.html` (landing), `my-approach.html`, `bio.html`, `individual.html`,
+  `couples.html`, `free-consultation.html`.
+- **Approach**: landing overview expanded (each pillar = tagline + a sentence,
+  her wording), with **new generated botanical icons** (`icon-cultivate/reflect/
+  witness.png`) replacing the minimalist SVG glyphs; deep-dive `my-approach.html`
+  uses her real Witness/Reflect/Cultivate copy + the "greatest gift" pull-quote.
+- **Bio page** from her provided text, **leading with the Master's in Clinical
+  Mental Health Counseling**, + a credentials strip. (Her live /bio was offline;
+  more detail can be added when it returns.)
+- **Session detail pages** (Individual $90/50min, Couples $150/80min) with
+  "this might be for you if…" + "how we work". Free-consultation page hosts the
+  mock booking widget. Offering cards on the landing link to these pages.
+- **Offerings**: "most requested" badge softened to a subtle "popular" pill;
+  **Retreats & Workshops broadened** (nature-based immersion, creative
+  expression, relational practice, mother–daughter workshops) — no longer only
+  sensuality/boundaries.
+- **Contact form** added (`#contact`, name/email/message) wired to **Web3Forms**
+  with graceful preview mode until an access key is set. Icon botanicals
+  generated via `gemini-3-pro-image` and background-stripped.
+- Verified: 6 pages render, console clean, mock calendar + contact form work,
+  desktop + mobile.
+
+**Action needed to make contact form live:** set a Web3Forms access key —
+replace `YOUR_ACCESS_KEY_HERE` in `index.html` `#contact`.
 
 ## Current state
 

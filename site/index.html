@@ -15,15 +15,16 @@
 
   <!-- ══════════════ NAV ══════════════ -->
   <header class="nav" id="nav">
-    <a class="nav__logo" href="#top" aria-label="Annika Tara — home">
+    <a class="nav__logo" href="index.html" aria-label="Annika Tara — home">
       <img src="assets/logo.png" alt="Annika Tara">
     </a>
     <nav class="nav__links" aria-label="Main navigation">
-      <a href="#approach">Approach</a>
-      <a href="#about">Bio</a>
+      <a href="my-approach.html">Approach</a>
+      <a href="bio.html">Bio</a>
       <a href="#offerings">Sessions</a>
       <a href="#words">Testimonials</a>
-      <a class="btn btn--small" href="#book">Free consultation</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--small" href="free-consultation.html">Free consultation</a>
     </nav>
     <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -50,7 +51,7 @@
           and to the life you're creating.
         </p>
         <div class="hero__cta reveal">
-          <a class="btn btn--primary" href="#book">Book a free consultation</a>
+          <a class="btn btn--primary" href="free-consultation.html">Book a free consultation</a>
           <a class="btn btn--ghost" href="#approach">My approach ↓</a>
         </div>
         <p class="hero__whisper reveal">Start here — a free, no-pressure consultation.</p>
@@ -65,56 +66,47 @@
       </div>
     </div>
 
-    <!-- ══════════════ APPROACH ══════════════ -->
+    <!-- ══════════════ APPROACH (overview) ══════════════ -->
     <section class="approach section" id="approach">
-      <img class="approach__medallion float-slow" src="assets/medallion-hands.png" alt="" aria-hidden="true">
       <p class="section__eyebrow reveal">My approach</p>
       <h2 class="reveal">A grounded, relational way of working</h2>
       <p class="section__lead reveal">
-        My work bridges nature connection, embodiment, and relational awareness.
+        My work bridges nature connection, embodiment, and relational awareness —
+        held in three movements that shape how we work together.
       </p>
 
       <div class="pillars">
         <article class="pillar reveal">
-          <svg class="pillar__glyph" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <g class="draw" stroke="var(--terracotta)" stroke-width="1.6" stroke-linecap="round">
-              <path d="M32 54 L32 30"/>
-              <path d="M32 40 C22 38 16 30 16 20 C26 22 32 30 32 40Z"/>
-              <path d="M32 34 C42 32 48 24 48 14 C38 16 32 24 32 34Z"/>
-              <path d="M22 54 C22 48 42 48 42 54"/>
-            </g>
-          </svg>
+          <img class="pillar__icon" src="assets/icon-cultivate.png" alt="" aria-hidden="true">
           <h3>Cultivate</h3>
-          <p>Intentional focus for deep transformation.</p>
+          <p class="pillar__lead">Intentional focus for deep transformation.</p>
+          <p class="pillar__more">Intentionally focusing generative energy, care,
+            and attention on what you want to manifest — honoring what no longer
+            serves you, and taking grounded action with an open hand.</p>
         </article>
 
         <article class="pillar reveal">
-          <svg class="pillar__glyph" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <g class="draw" stroke="var(--terracotta)" stroke-width="1.6" stroke-linecap="round">
-              <path d="M10 32 C20 24 44 24 54 32"/>
-              <path d="M10 32 C20 40 44 40 54 32"/>
-              <circle cx="32" cy="32" r="7"/>
-              <path d="M32 8 L32 14 M32 50 L32 56"/>
-            </g>
-          </svg>
+          <img class="pillar__icon" src="assets/icon-reflect.png" alt="" aria-hidden="true">
           <h3>Reflect</h3>
-          <p>Truly seeing yourself in how things are.</p>
+          <p class="pillar__lead">Mirroring &amp; introspection for profound growth.</p>
+          <p class="pillar__more">The catalyst for metamorphosis — reflection is
+            the scaffolding that shapes how we see, and gently reframes what
+            change can look like.</p>
         </article>
 
         <article class="pillar reveal">
-          <svg class="pillar__glyph" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <g class="draw" stroke="var(--terracotta)" stroke-width="1.6" stroke-linecap="round">
-              <circle cx="24" cy="32" r="12"/>
-              <circle cx="40" cy="32" r="12"/>
-            </g>
-          </svg>
+          <img class="pillar__icon" src="assets/icon-witness.png" alt="" aria-hidden="true">
           <h3>Witness</h3>
-          <p>Mirroring and introspection for profound growth.</p>
+          <p class="pillar__lead">Truly seeing yourself in how things are.</p>
+          <p class="pillar__more">Together we hold a tender yet resolute mirror —
+            meeting yourself with compassion and equanimity, and finding the
+            distance that opens new perspective.</p>
         </article>
       </div>
+      <a class="btn btn--ghost approach__cta reveal" href="my-approach.html">Explore my approach →</a>
     </section>
 
-    <!-- ══════════════ ABOUT / BIO ══════════════ -->
+    <!-- ══════════════ ABOUT / BIO (teaser) ══════════════ -->
     <section class="about section" id="about">
       <div class="about__portrait reveal">
         <div class="about__frame">
@@ -126,19 +118,20 @@
         <p class="section__eyebrow reveal">Meet Annika Tara</p>
         <h2 class="reveal">Hello, I'm Annika.</h2>
         <p class="reveal">
-          I'm a Relational Life Coach and facilitator whose work bridges
+          I'm a Relational Life Coach and facilitator with a Master's in Clinical
+          Mental Health Counseling. My work bridges
           <em>nature connection, embodiment, and relational awareness.</em>
         </p>
         <p class="reveal">
           Together, we explore how you relate — to yourself, to others, and to
-          the life you're creating. Through somatic awareness, reflective
-          dialogue, and mindful practice, we tend to what's ready to grow.
+          the life you're creating. Through somatic awareness, mindfulness, and
+          experiential practice, we tend to what's ready to grow.
         </p>
-        <a class="link-arrow reveal" href="#book">Book a free consultation →</a>
+        <a class="link-arrow reveal" href="bio.html">More about Annika →</a>
       </div>
     </section>
 
-    <!-- ══════════════ OFFERINGS / SESSIONS ══════════════ -->
+    <!-- ══════════════ OFFERINGS / SESSIONS (overview) ══════════════ -->
     <section class="offerings section" id="offerings">
       <p class="section__eyebrow reveal">Ways we can work together</p>
       <h2 class="reveal">Sessions &amp; offerings</h2>
@@ -149,31 +142,28 @@
           <span class="card__tag" aria-hidden="true">Individual</span>
           <h3>Individual Coaching</h3>
           <p class="card__price">$90 · 50-minute sessions</p>
-          <p>Deeper self-connection, relationship clarity, and life direction.
-             Somatic awareness, reflective dialogue, and mindfulness to meet
-             emotional patterns and reconnect with creativity and desire.</p>
-          <a class="btn btn--card" href="#book" data-offering="individual">Book individual coaching</a>
+          <p>Deeper self-connection, relationship clarity, and life direction —
+             meeting emotional patterns and reconnecting with creativity and desire.</p>
+          <a class="btn btn--card" href="individual.html">Learn more →</a>
         </article>
 
         <article class="card card--featured reveal">
-          <div class="card__badge">most requested</div>
+          <div class="card__badge">popular</div>
           <span class="card__tag" aria-hidden="true">Couples</span>
           <h3>Couples &amp; Relational Coaching</h3>
           <p class="card__price">$150 · 80-minute sessions</p>
           <p>For communication, deeper intimacy, and navigating conflict or
-             transition — including non-traditional relationships. Relational and
-             somatic practices to carry between sessions.</p>
-          <a class="btn btn--card" href="#book" data-offering="couples">Book couples coaching</a>
+             transition — including non-traditional relationships.</p>
+          <a class="btn btn--card" href="couples.html">Learn more →</a>
         </article>
 
         <article class="card reveal">
           <span class="card__tag" aria-hidden="true">In person</span>
           <h3>Retreats &amp; Workshops</h3>
           <p class="card__price">Seasonal gatherings</p>
-          <p>Mindful connection, conscious sexuality and sensuality, ethical
-             non-monogamy, ritual, boundaries and desire, body awareness, and
-             nature connection for personal growth.</p>
-          <a class="btn btn--card" href="#book" data-offering="retreat">Immerse</a>
+          <p>Nature-based immersion, creative expression, and relational practice —
+             from intimate circles to mother–daughter workshops.</p>
+          <a class="btn btn--card" href="#contact">Enquire →</a>
         </article>
       </div>
       <p class="offerings__note reveal">Secure card payments via Stripe are coming soon. ✦</p>
@@ -202,7 +192,7 @@
       <p class="quotes__note reveal">Placeholder — Annika's real client testimonials go here.</p>
     </section>
 
-    <!-- ══════════════ BOOKING / CONTACT ══════════════ -->
+    <!-- ══════════════ BOOKING ══════════════ -->
     <section class="booking section" id="book">
       <img class="booking__mountains" src="assets/mountains-band.jpg" alt="" aria-hidden="true">
       <div class="booking__halo" aria-hidden="true"></div>
@@ -213,11 +203,9 @@
         personal transformation. Pick a time that suits you. ✦
       </p>
 
-      <!-- ▸ BOOKING WIDGET
-           Right now this shows a styled MOCK of the TidyCal booking widget so
-           Annika can see the experience. To go live, delete `.tidycal-mock`
-           and uncomment the real embed below, then set the real booking path
-           (TidyCal dashboard → booking type → Embed). -->
+      <!-- ▸ BOOKING WIDGET — styled MOCK of the TidyCal widget (preview).
+           To go live: delete `.tidycal-mock` and uncomment the real embed,
+           then set the real booking path. See site/README.md. -->
       <div class="booking__embed reveal">
         <div class="tidycal-mock" id="tidycal-mock" aria-label="Booking calendar preview">
           <div class="tcm__aside">
@@ -238,11 +226,11 @@
               <button class="tcm__nav" type="button" aria-label="Next month">›</button>
             </div>
             <div class="tcm__dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
-            <div class="tcm__grid" id="tcm-grid"><!-- days injected by site.js --></div>
+            <div class="tcm__grid" id="tcm-grid"></div>
           </div>
           <div class="tcm__slots">
             <p class="tcm__slotday" id="tcm-slotday">Select a day</p>
-            <div class="tcm__slotlist" id="tcm-slotlist"><!-- slots injected by site.js --></div>
+            <div class="tcm__slotlist" id="tcm-slotlist"></div>
             <button class="btn btn--primary tcm__confirm" id="tcm-confirm" type="button" disabled>Confirm</button>
             <p class="tcm__preview">Preview — live scheduling once TidyCal is connected</p>
           </div>
@@ -255,12 +243,46 @@
           <a class="btn btn--primary" href="https://tidycal.com/annikatara">Open the booking page</a>
         </noscript>
       </div>
-      <p class="booking__fallback reveal">
-        Prefer email? <a href="mailto:hello@annikatara.com">hello@annikatara.com</a>
-      </p>
       <p class="booking__stripe reveal">
         Secure card payments via <strong>Stripe</strong> are coming soon.
       </p>
+    </section>
+
+    <!-- ══════════════ CONTACT FORM ══════════════ -->
+    <section class="contact section" id="contact">
+      <p class="section__eyebrow reveal">Contact</p>
+      <h2 class="reveal">Prefer to write first?</h2>
+      <p class="section__lead reveal">
+        Reach out to schedule a free consultation, ask about a workshop, or just
+        say hello. I read every message.
+      </p>
+
+      <!-- ▸ CONTACT FORM
+           Uses Web3Forms (works on static hosting). To receive messages:
+           create a free access key at web3forms.com and replace
+           YOUR_ACCESS_KEY_HERE below. Until then the form runs in preview mode. -->
+      <form class="contact__form reveal" id="contact-form"
+            action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        <input type="hidden" name="subject" value="New message from annikatara.com">
+        <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off">
+        <div class="contact__row">
+          <label class="contact__field">
+            <span>Name</span>
+            <input type="text" name="name" required autocomplete="name" placeholder="Your name">
+          </label>
+          <label class="contact__field">
+            <span>Email</span>
+            <input type="email" name="email" required autocomplete="email" placeholder="you@email.com">
+          </label>
+        </div>
+        <label class="contact__field">
+          <span>Message</span>
+          <textarea name="message" rows="5" required placeholder="What's on your mind?"></textarea>
+        </label>
+        <button class="btn btn--primary" type="submit">Send message</button>
+        <p class="contact__status" id="contact-status" role="status" aria-live="polite"></p>
+      </form>
     </section>
 
   </main>
@@ -270,15 +292,18 @@
     <img class="footer__logo" src="assets/logo.png" alt="Annika Tara">
     <p class="footer__tag">relational life coaching · embodiment · nature connection</p>
     <nav class="footer__links" aria-label="Footer">
-      <a href="mailto:hello@annikatara.com">hello@annikatara.com</a>
-      <a href="https://instagram.com/annikatara" rel="noopener">Instagram</a>
-      <a href="#book">Free consultation</a>
+      <a href="my-approach.html">Approach</a>
+      <a href="bio.html">Bio</a>
+      <a href="individual.html">Individual</a>
+      <a href="couples.html">Couples</a>
+      <a href="free-consultation.html">Free consultation</a>
+      <a href="#contact">Contact</a>
     </nav>
     <p class="footer__fine">© 2026 Annika Tara · Relational Life Coaching · <a href="#">Privacy Policy</a> · <a href="#">Terms</a></p>
   </footer>
 
   <!-- floating booking pill — appears once the hero scrolls away -->
-  <a class="bookpill" id="bookpill" href="#book">✦&nbsp; Free consultation</a>
+  <a class="bookpill" id="bookpill" href="free-consultation.html">✦&nbsp; Free consultation</a>
 
   <!-- TidyCal embed script (used once the real embed above is enabled) -->
   <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>

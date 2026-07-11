@@ -6,6 +6,21 @@ No build step — upload the `site/` folder contents to any static host
 
 Relational Life Coaching. Voice and content follow **annikatara.com**.
 
+## Pages
+
+Multi-page, shared nav/footer:
+`index.html` (landing) · `my-approach.html` · `bio.html` · `individual.html` ·
+`couples.html` · `free-consultation.html`. All share `styles.css` + `site.js`
+and live in this folder, so relative `assets/` links work everywhere.
+
+## Contact form
+
+The `#contact` form on the landing posts to **Web3Forms** (works on static
+hosting, no backend). To receive messages: create a free access key at
+web3forms.com and replace `YOUR_ACCESS_KEY_HERE` in `index.html`. Until then it
+runs in a friendly preview mode (no email sent). The submit handler and messages
+live in `site.js`.
+
 ## Booking — the mock vs. real TidyCal
 
 The `#book` section currently shows a **styled mock** of the TidyCal booking
