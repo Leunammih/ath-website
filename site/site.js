@@ -2,6 +2,7 @@
    Respects prefers-reduced-motion throughout. */
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = matchMedia("(pointer: fine)").matches;
 
 /* ─── Nav: solid on scroll ──────────────────────────────── */
 const nav = document.getElementById("nav");
@@ -33,15 +34,16 @@ const io = new IntersectionObserver(
   }),
   { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
 );
-document.querySelectorAll(".reveal, .hero__plant").forEach(el => io.observe(el));
+document.querySelectorAll(".reveal, .grow-reveal").forEach(el => io.observe(el));
 
-/* ─── Hero parallax (mouse + scroll), lerped for softness ─ */
+/* ─── Mouse parallax (bg, plants), lerped for softness ──── */
 const layers = [...document.querySelectorAll("[data-depth]")];
-let mx = 0, my = 0, tx = 0, ty = 0;
+const glow = document.getElementById("glow");
+let mx = 0, my = 0, tx = 0, ty = 0;   // lerped / target, -1 … 1
 
-if (!reduceMotion && matchMedia("(pointer: fine)").matches) {
+if (!reduceMotion && finePointer) {
   window.addEventListener("mousemove", e => {
-    tx = (e.clientX / innerWidth - 0.5) * 2;   // -1 … 1
+    tx = (e.clientX / innerWidth - 0.5) * 2;
     ty = (e.clientY / innerHeight - 0.5) * 2;
   }, { passive: true });
 
@@ -52,6 +54,10 @@ if (!reduceMotion && matchMedia("(pointer: fine)").matches) {
       const d = parseFloat(el.dataset.depth);
       el.style.transform =
         `translate3d(${(-mx * 40 * d).toFixed(2)}px, ${(-my * 26 * d).toFixed(2)}px, 0)`;
+    }
+    if (glow) {
+      glow.style.transform =
+        `translate3d(${(mx * innerWidth * 0.12).toFixed(1)}px, ${(my * innerHeight * 0.08).toFixed(1)}px, 0)`;
     }
     requestAnimationFrame(drift);
   })();
@@ -70,11 +76,11 @@ if (canvas && !reduceMotion) {
   resize();
   window.addEventListener("resize", resize);
 
-  const N = Math.min(46, Math.floor(innerWidth / 30));
+  const N = Math.min(42, Math.floor(innerWidth / 34));
   for (let i = 0; i < N; i++) {
     motes.push({
       x: Math.random(), y: Math.random(),
-      r: 0.7 + Math.random() * 1.9,
+      r: 0.7 + Math.random() * 1.8,
       vx: (Math.random() - 0.5) * 0.00006,
       vy: -0.00004 - Math.random() * 0.00008,
       tw: Math.random() * Math.PI * 2,          // twinkle phase
@@ -91,7 +97,7 @@ if (canvas && !reduceMotion) {
       if (m.x < -0.02) m.x = 1.02;
       if (m.x > 1.02) m.x = -0.02;
 
-      const twinkle = 0.35 + 0.3 * Math.sin(t * 0.001 * m.sp + m.tw);
+      const twinkle = 0.32 + 0.28 * Math.sin(t * 0.001 * m.sp + m.tw);
       ctx.beginPath();
       ctx.arc(m.x * w, m.y * h, m.r * devicePixelRatio, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(201, 162, 39, ${twinkle.toFixed(3)})`;
@@ -99,6 +105,43 @@ if (canvas && !reduceMotion) {
     }
     requestAnimationFrame(draw);
   })(0);
+}
+
+/* ─── Cards: soft tilt toward the cursor ────────────────── */
+if (!reduceMotion && finePointer) {
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("pointermove", e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;   // -0.5 … 0.5
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      card.style.setProperty("--ry", `${(px * 4).toFixed(2)}deg`);
+      card.style.setProperty("--rx", `${(-py * 3).toFixed(2)}deg`);
+    });
+    card.addEventListener("pointerleave", () => {
+      card.style.setProperty("--ry", "0deg");
+      card.style.setProperty("--rx", "0deg");
+    });
+  });
+}
+
+/* ─── Floating book pill: appears once the hero is gone ─── */
+const pill = document.getElementById("bookpill");
+const hero = document.getElementById("hero");
+const booking = document.getElementById("book");
+if (pill && hero && booking) {
+  let heroVisible = true, bookingVisible = false;
+  const update = () =>
+    pill.classList.toggle("show", !heroVisible && !bookingVisible);
+
+  new IntersectionObserver(([e]) => {
+    heroVisible = e.isIntersecting;
+    update();
+  }, { threshold: 0.12 }).observe(hero);
+
+  new IntersectionObserver(([e]) => {
+    bookingVisible = e.isIntersecting;
+    update();
+  }, { threshold: 0.15 }).observe(booking);
 }
 
 /* ─── The moth: click for a little flutter ──────────────── */

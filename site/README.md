@@ -31,6 +31,10 @@ All artwork in `assets/` was generated with Nano Banana Pro
 white-stripped to transparency. Portrait is from
 `../Website AT reference elements/Annika Portrait.HEIC`.
 
+Key pieces: `hero-mountains.jpg` (wide open panorama), `mountains-band.jpg`
+(soft horizon behind the booking section), `succulent-left.png` /
+`succulent-right.png` (hero plants that grow in), `sprig.png` (about section).
+
 ## Placeholders to review
 
 - Prices (€222 / €333) and offering copy in `#offerings`
