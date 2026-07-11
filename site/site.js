@@ -1,5 +1,5 @@
-/* Annika Tara — subtle motion, nothing distracting.
-   Respects prefers-reduced-motion throughout. */
+/* Annika Tara — Relational Life Coaching
+   subtle motion, nothing distracting. Respects prefers-reduced-motion throughout. */
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = matchMedia("(pointer: fine)").matches;
@@ -144,12 +144,86 @@ if (pill && hero && booking) {
   }, { threshold: 0.15 }).observe(booking);
 }
 
-/* ─── The moth: click for a little flutter ──────────────── */
-const moth = document.getElementById("moth");
-if (moth) {
-  moth.addEventListener("click", () => {
-    moth.classList.remove("flutter");
-    void moth.offsetWidth;               // restart animation
-    moth.classList.add("flutter");
+/* ─── Mock TidyCal booking widget (preview only) ─────────── */
+(function mockBooking() {
+  const grid = document.getElementById("tcm-grid");
+  if (!grid) return;
+  const monthEl  = document.getElementById("tcm-month");
+  const slotDay  = document.getElementById("tcm-slotday");
+  const slotList = document.getElementById("tcm-slotlist");
+  const confirm  = document.getElementById("tcm-confirm");
+  const [prevBtn, nextBtn] = document.querySelectorAll(".tcm__nav");
+  const MONTHS = ["January","February","March","April","May","June","July",
+                  "August","September","October","November","December"];
+  const SLOTS = ["9:00 AM", "10:30 AM", "1:00 PM", "3:30 PM", "5:00 PM"];
+
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const monthStart = d => new Date(d.getFullYear(), d.getMonth(), 1);
+  let view = monthStart(today);
+  let selectedDay = null;
+
+  const isOpen = d => { const wd = d.getDay(); return wd >= 1 && wd <= 5 && d >= today; };
+
+  function render() {
+    monthEl.textContent = MONTHS[view.getMonth()] + " " + view.getFullYear();
+    prevBtn.disabled = view <= monthStart(today);
+    prevBtn.style.opacity = prevBtn.disabled ? .35 : 1;
+    grid.innerHTML = "";
+    const startDow = new Date(view.getFullYear(), view.getMonth(), 1).getDay();
+    const daysIn = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+    for (let i = 0; i < startDow; i++) {
+      const e = document.createElement("div");
+      e.className = "tcm__day is-empty";
+      grid.appendChild(e);
+    }
+    for (let day = 1; day <= daysIn; day++) {
+      const d = new Date(view.getFullYear(), view.getMonth(), day);
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "tcm__day"; b.textContent = day;
+      if (isOpen(d)) {
+        b.classList.add("is-open");
+        b.addEventListener("click", () => selectDay(d, b));
+      } else {
+        b.classList.add("is-past"); b.disabled = true;
+      }
+      grid.appendChild(b);
+    }
+  }
+
+  function selectDay(d, btn) {
+    selectedDay = d;
+    grid.querySelectorAll(".tcm__day").forEach(x => x.classList.remove("is-selected"));
+    btn.classList.add("is-selected");
+    slotDay.textContent = d.toLocaleDateString(undefined,
+      { weekday: "long", month: "long", day: "numeric" });
+    slotList.innerHTML = "";
+    SLOTS.forEach(t => {
+      const s = document.createElement("button");
+      s.type = "button"; s.className = "tcm__slot"; s.textContent = t;
+      s.addEventListener("click", () => {
+        slotList.querySelectorAll(".tcm__slot").forEach(x => x.classList.remove("is-selected"));
+        s.classList.add("is-selected");
+        confirm.disabled = false;
+      });
+      slotList.appendChild(s);
+    });
+    confirm.disabled = true;
+    confirm.textContent = "Confirm";
+  }
+
+  prevBtn.addEventListener("click", () => {
+    if (view <= monthStart(today)) return;
+    view = new Date(view.getFullYear(), view.getMonth() - 1, 1); render();
   });
-}
+  nextBtn.addEventListener("click", () => {
+    view = new Date(view.getFullYear(), view.getMonth() + 1, 1); render();
+  });
+  confirm.addEventListener("click", () => {
+    confirm.textContent = "✓ Held — preview only";
+    confirm.disabled = true;
+  });
+
+  render();
+  const firstOpen = grid.querySelector(".tcm__day.is-open");
+  if (firstOpen) firstOpen.click();   // pre-select a day so slots show
+})();

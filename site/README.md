@@ -2,41 +2,50 @@
 
 Static single-page site: `index.html` + `styles.css` + `site.js` + `assets/`.
 No build step — upload the `site/` folder contents to any static host
-(Hostinger, Netlify, etc.) or open `index.html` directly.
+(Netlify, Hostinger, etc.) or open `index.html` directly.
 
-## Connect TidyCal (booking)
+Relational Life Coaching. Voice and content follow **annikatara.com**.
 
-The booking section (`#book`) contains:
+## Booking — the mock vs. real TidyCal
 
-```html
-<div class="tidycal-embed" data-path="annikatara/discovery-call"></div>
-```
+The `#book` section currently shows a **styled mock** of the TidyCal booking
+widget (`.tidycal-mock`) so the experience is visible before the account
+exists. It is a preview only — it does not book anything.
 
-Replace `annikatara/discovery-call` with the real booking path from the
-TidyCal dashboard (Booking type → Embed). Also update the two fallback links
-pointing to `https://tidycal.com/annikatara` (booking section + footer noscript).
+To go live with TidyCal:
+
+1. In `index.html` `#book`, delete the whole `<div class="tidycal-mock">…</div>`.
+2. Uncomment the real embed right below it:
+   ```html
+   <div class="tidycal-embed" data-path="annikatara/free-consultation"></div>
+   ```
+3. Replace `annikatara/free-consultation` with the real booking path from the
+   TidyCal dashboard (Booking type → Embed). The TidyCal `embed.js` script is
+   already included at the bottom of `index.html`.
 
 ## Stripe (later)
 
-Payments are currently handled inside TidyCal if configured there.
-For standalone Stripe: create Payment Links in the Stripe dashboard and point
-each offering card's button (`.btn--card` in `#offerings`) at its link —
-no code changes needed beyond the `href`s. The "coming soon" note is in
-`.offerings__note` and `.booking__stripe`.
+Payments can be handled inside TidyCal if configured there. For standalone
+Stripe: create Payment Links in the Stripe dashboard and point each offering
+card's button (`.btn--card` in `#offerings`) at its link — no code changes
+beyond the `href`s. The "coming soon" note lives in `.offerings__note` and
+`.booking__stripe`.
 
 ## Images
 
-All artwork in `assets/` was generated with Nano Banana Pro
-(`gemini-3-pro-image`) in the blush / terracotta / sage palette, then
-white-stripped to transparency. Portrait is from
-`../Website AT reference elements/Annika Portrait.HEIC`.
+- `logo.png`, `annika-portrait.jpg` — client-provided; never regenerate.
+- `hero-mountains.jpg`, `mountains-band.jpg` — watercolor mountains generated
+  with `gemini-3-pro-image` (blush / terracotta / sage palette).
+- `medallion-roots.png`, `medallion-hands.png`, `medallion-moth.png` — Annika's
+  DALLE medallions, circular-masked and web-optimized.
 
-Key pieces: `hero-mountains.jpg` (wide open panorama), `mountains-band.jpg`
-(soft horizon behind the booking section), `succulent-left.png` /
-`succulent-right.png` (hero plants that grow in), `sprig.png` (about section).
+To regenerate art (blush #E8B4A0 / terracotta #C05B2E / sage #8FA382 / cream
+#FAF3E8 palette, soft watercolor), call `gemini-3-pro-image` REST directly with
+the key at `../API Keys/gemini.key` (`x-goog-api-key` header; supports
+`aspectRatio` 21:9 and `imageSize` 2K). Mask/optimize PNGs with Pillow.
 
-## Placeholders to review
+## Placeholders to fill
 
-- Prices (€222 / €333) and offering copy in `#offerings`
-- Testimonials in `#kind-words`
-- `hello@annikatara.com`, Instagram link, Imprint & Privacy links in the footer
+- Testimonials in `#words` (3 placeholder cards → real client quotes).
+- `hello@annikatara.com`, Instagram URL, Privacy Policy & Terms links (footer).
+- Prices ($90 / $150) and offering copy are from annikatara.com — confirm.
