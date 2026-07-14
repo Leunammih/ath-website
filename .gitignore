@@ -3,3 +3,8 @@ node_modules/
 dist/
 *.key
 .claude/
+
+# internal / not for the public hosting repo (kept locally)
+CLAUDE.md
+STATUS.md
+Website AT reference elements/
